@@ -1,0 +1,24 @@
+easy_admin:
+    site_name: 'Admin panel'
+    entities:
+        User:
+            class: App\Entity\User
+            list:
+                actions: ['show']
+            form:
+                fields:
+                    - { property: 'email' }
+                    - { property: 'password' }
+                    - { property: 'firstName' }
+                    - { property: 'lastName' }
+                    -  property: 'roles'
+                       type: 'choice'
+                       type_options:
+                           mapped: true
+                           expanded: true
+                           multiple: true
+                           choices: { 'Admin': 'ROLE_ADMIN', 'User': 'ROLE_USER' }
+
+    design:
+        menu:
+            - {entity: User, icon: "user"}
